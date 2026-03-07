@@ -1,0 +1,126 @@
+﻿using System;
+
+namespace Cast_Convert_If_else_04._21._25
+{
+    internal class Program
+    {
+        static void Main1(string[] args)
+        {
+            /* IMPLICIT CASTING */
+            byte imageByte = 20;
+            int imageConvertToInt = imageByte;
+            //Console.WriteLine(imageConvertToInt.GetType());
+
+            /* EXPILICIT CASTING */
+            int ageInt = 500;
+            byte ageConvertToByte = (byte)ageInt;
+            //Console.WriteLine(ageConvertToByte.GetType());
+
+            double ageDouble = 3.8;
+            int ageConvertToInt = (int)ageDouble;
+            //Console.WriteLine(ageConvertToInt.GetType());
+
+            /* CONVERT */
+            string value = "true";
+            bool valueConvertToBool = Convert.ToBoolean(value);
+            //Console.WriteLine(valueConvertToBool.GetType());
+
+            /* type.Pasre() || type.TryParse() */
+            string ageString = "true";
+            bool.Parse(ageString);
+            //Console.WriteLine(bool.Parse(ageString));
+
+            string tryToConvertToInt = "matrix";
+            decimal result;
+            bool isCheck = decimal.TryParse(tryToConvertToInt, out result);
+            //Console.WriteLine(isCheck + " " + result);
+        }
+        static void Main(string[] args)
+        {
+            /* istifadəçidən iki ədəd alın(string formatında).Onları int-ə çevirin və cəmini ekrana verin. */
+
+            Console.WriteLine("Enter first number:");
+            string enteredFirstNumber = Console.ReadLine();
+            Console.WriteLine("Enter second number:");
+            string enteredSecondNumber = Console.ReadLine();
+
+            var isTrue = int.TryParse(enteredFirstNumber, out int firstNumber);
+            var isFalse = int.TryParse(enteredSecondNumber, out int secondNumber);
+
+            if (firstNumber != 0 && secondNumber != 0)
+            {
+                var total = firstNumber + secondNumber;
+                Console.WriteLine("Result: " + total);
+            }
+            else
+            {
+                Console.WriteLine("one of the entered keys is not number.");
+            }
+
+            // double tipində verilmiş dəyəri int tipinə cast edin.
+
+            double value = Convert.ToDouble(Console.ReadLine());
+            int convertToInt = (int)value;
+            Console.WriteLine(convertToInt.GetType() + " " + convertToInt);
+
+            // int.TryParse() metodunu istifadə edərək istifadəçinin daxil etdiyi dəyərin ədəd olub
+            // olmadığını yoxlayın
+
+            Console.WriteLine("Enter number");
+            var number = Console.ReadLine();
+            bool isInt = int.TryParse(number, out int result);
+            bool isDouble = double.TryParse(number, out double result1);
+            var a = 5;
+            Console.WriteLine(result == 0 || result1 == 0 ? "Congratulate !! " : "entered value is not number");
+
+            // İstifadəçidən yaş alın və yoxlayın: 18 - dən kiçikdirsə — "Siz hələ yetkin deyilsiniz"
+            // 18 və ya daha böyükdürsə — "Yetkin şəxssiniz"
+
+            Console.WriteLine("You must entered number");
+            var getAge = Console.ReadLine();
+            var ageCheck = int.TryParse(getAge, out int getAgeCheck);
+
+            if (!ageCheck)
+            {
+                Console.WriteLine("Entered keys is not correct");
+            }
+            else if (getAgeCheck > 0 && getAgeCheck < 18)
+            {
+                Console.WriteLine("Siz hələ yetkin deyilsiniz");
+            }
+            else
+            {
+                Console.WriteLine("Yetkin şəxssiniz");
+            }
+
+            var resulAge = !ageCheck ? "Entered keys is not correct" : getAgeCheck > 0 && getAgeCheck <= 18 ? "Siz hələ yetkin deyilsiniz" : "Yetkin şəxssiniz";
+            Console.WriteLine(resulAge);
+
+
+            // İstifadəçidən yaş və bal al.Yoxla ki, yaş 18 - dən böyük və bal 50 - dən çoxdursa, keçib.
+
+            var userAge = Console.ReadLine();
+            var userScore = Console.ReadLine();
+            var totalResultAge = int.TryParse(userAge, out int resultAge);
+            var totalResultScore = int.TryParse(userScore, out int resultScore);
+
+            var result3 = !totalResultAge || !totalResultScore ? "One of the keys is not number" :
+                resultAge > 0 && resultAge <= 18 && resultScore > 50 ? "You pass the exam" : "You failed the exam";
+            Console.WriteLine(result3);
+
+
+            // İki ədəd daxil edin və ternary operatorla hansının daha böyük olduğunu təyin edib console-a yazdirin.
+
+            Console.WriteLine("You entered number");
+            var getNum_1 = Console.ReadLine();
+            Console.WriteLine("You entered number");
+            var getNum_2 = Console.ReadLine();
+
+            var resultCheckNum_1 = int.TryParse(getNum_1, out int getNumCheck_1);
+            var resultCheckNum_2 = int.TryParse(getNum_2, out int getNumCheck_2);
+
+            var result4 = getNumCheck_1 > getNumCheck_2 ? getNumCheck_1 + " boyukdur" : getNumCheck_2 + "boyukdur";
+            Console.WriteLine(result4);
+        }
+    }
+}
