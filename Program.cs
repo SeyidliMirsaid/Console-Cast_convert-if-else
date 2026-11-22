@@ -6,12 +6,22 @@ namespace Cast_Convert_If_else_04._21._25
     {
         static void Main1(string[] args)
         {
-            /* IMPLICIT CASTING */
+            // =========================== UTF8 ===============================
+            /* 
+              OutputEncoding ekrana yazılan hərflər üçündür,
+              InputEncoding isə klaviaturadan yazdığın hərflər üçün (məsələn, Console.ReadLine()).
+            */
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
+            Console.InputEncoding = System.Text.Encoding.UTF8;
+
+            
+            // =========================== IMPLICIT CASTING ===============================
             byte imageByte = 20;
             int imageConvertToInt = imageByte;
             //Console.WriteLine(imageConvertToInt.GetType());
 
-            /* EXPILICIT CASTING */
+            // =============================== EXPILICIT CASTING ===============================
+
             int ageInt = 500;
             byte ageConvertToByte = (byte)ageInt;
             //Console.WriteLine(ageConvertToByte.GetType());
@@ -20,12 +30,13 @@ namespace Cast_Convert_If_else_04._21._25
             int ageConvertToInt = (int)ageDouble;
             //Console.WriteLine(ageConvertToInt.GetType());
 
-            /* CONVERT */
+            // =============================== CONVERT ===============================
+            
             string value = "true";
             bool valueConvertToBool = Convert.ToBoolean(value);
             //Console.WriteLine(valueConvertToBool.GetType());
 
-            /* type.Pasre() || type.TryParse() */
+             // =============================== type.Pasre() || type.TryParse() ===============================
             string ageString = "true";
             bool.Parse(ageString);
             //Console.WriteLine(bool.Parse(ageString));
@@ -33,8 +44,32 @@ namespace Cast_Convert_If_else_04._21._25
             string tryToConvertToInt = "matrix";
             decimal result;
             bool isCheck = decimal.TryParse(tryToConvertToInt, out result);
-            //Console.WriteLine(isCheck + " " + result);
+            //Console.WriteLine(isCheck + " = false " + result + "=0");
+
+
+            // =========================== Ternary Operator AND If ElSE =========================
+            var age = 20;
+            
+            if (age == 18)
+            {
+                Console.WriteLine("Yaş 18 deyil.");
+            }
+            else if (age < 18)
+            {
+                Console.WriteLine("Siz hələ yetkin deyilsiniz");
+            }
+            else if (age >= 21)
+            {
+                Console.WriteLine("Yaşınız 21-dən kiçikdir");
+            }
+            else
+            {
+                Console.WriteLine("Yaşınız müəyyən edilmədi.");
+            }
+            
+            string result2 = age == 25 ? "Yaş 25-dir" : "Yaş müəyyən edilmədi";
         }
+        
         static void Main(string[] args)
         {
             /* istifadəçidən iki ədəd alın(string formatında).Onları int-ə çevirin və cəmini ekrana verin. */
