@@ -164,6 +164,54 @@ namespace Cast_Convert_If_else_04._21._25
 
             var result4 = getNumCheck_1 > getNumCheck_2 ? getNumCheck_1 + " boyukdur" : getNumCheck_2 + "boyukdur";
             Console.WriteLine(result4);
+
+            /* İstifadəçidən qiymət (məsələn, 19.99) daxil etməsini istə. Onu double-a çevir, sonra (int) cast ilə tam hissəsini göstər.*/
+
+            Console.WriteLine("Qiymət daxil edin: ");
+            var value = Console.ReadLine();
+            
+            var isValid = double.TryParse(value, out double price);
+            
+            if (isValid)
+            {
+                Console.WriteLine($"Entered price: {price}");
+                Console.WriteLine($"The full price: {(int)price}");
+            }
+            else
+            {
+                Console.WriteLine("Düzgün qiymət daxil edin!");
+            }
+            
+            /*
+             Kalkulyator (üçlü operator ilə)
+            
+            İstifadəçidən iki ədəd və əməliyyat (+ və ya -) daxil etməsini istə.
+            
+            İki ədəd də TryParse ilə yoxlanılsın, səhv varsa uyğun xəta mesajı çıxsın.
+             */
+            
+            Console.WriteLine("Ədədi daxil et: ");
+            var number = Console.ReadLine();
+            Console.WriteLine("Ikinci ədədi daxil et: ");
+            var number2 = Console.ReadLine();
+            Console.WriteLine("Əməliyyatı seç: + / - ");
+            var operation = Console.ReadLine();
+            
+            var isFirstValue = int.TryParse(number, out int first);
+            var isSecondValue = int.TryParse(number2, out int second);
+            
+            
+            if (isFirstValue && isSecondValue)
+            {
+            
+                var sum = operation == "+" ? (first + second).ToString() :
+                    operation == "-" ? (first - second).ToString() : "Əməliyyat seçilməyib";
+                Console.WriteLine("Nəticə: " + sum);
+            }
+            else
+            {
+                Console.WriteLine("Daxil olunan ədədlər duzgun deyil");
+            }
         }
     }
 }
