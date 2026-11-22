@@ -74,22 +74,30 @@ namespace Cast_Convert_If_else_04._21._25
         {
             /* istifadəçidən iki ədəd alın(string formatında).Onları int-ə çevirin və cəmini ekrana verin. */
 
-            Console.WriteLine("Enter first number:");
-            string enteredFirstNumber = Console.ReadLine();
-            Console.WriteLine("Enter second number:");
-            string enteredSecondNumber = Console.ReadLine();
-
-            var isTrue = int.TryParse(enteredFirstNumber, out int firstNumber);
-            var isFalse = int.TryParse(enteredSecondNumber, out int secondNumber);
-
-            if (firstNumber != 0 && secondNumber != 0)
+            Console.WriteLine("İlk ədədi daxil edin:");
+            string? firstNumber = Console.ReadLine();
+            Console.WriteLine("Ikinci ədədi daxil edin:");
+            string? secondNumber = Console.ReadLine();
+            
+            var IsTrue = int.TryParse(firstNumber, out int checkFirstNumber);
+            var IsFalse = int.TryParse(secondNumber, out int checkSecondNumber);
+            
+            var result = IsTrue ? IsFalse ? (checkFirstNumber + checkSecondNumber).ToString() : 
+                "The first number hasn't been entered correctly." :
+                "The second number hasn't been entered correctly."
+            Console.WriteLine(result);
+            
+            if (!IsTrue)
             {
-                var total = firstNumber + secondNumber;
-                Console.WriteLine("Result: " + total);
+                Console.WriteLine("The first number wasn't entered correctly");
+            }
+            else if (!IsFalse)
+            {
+                Console.WriteLine("The second number wasn't entered correctly");
             }
             else
             {
-                Console.WriteLine("one of the entered keys is not number.");
+                Console.WriteLine($"Cəmi: {checkFirstNumber + checkSecondNumber}");
             }
 
             // double tipində verilmiş dəyəri int tipinə cast edin.
